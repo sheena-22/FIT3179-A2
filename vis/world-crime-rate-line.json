@@ -65,7 +65,7 @@
             "encoding": {
                 "y": {
                     "aggregate": "mean", "field": " Per 100K Population", "type": "quantitative"                },
-                "color": {"datum": "Mean Crime Rate"} 
+                "color": {"datum": "Mean Crime Rate"}
             }
         },
         {
@@ -78,7 +78,7 @@
               "fontWeight": "bold"
             },
             "encoding": {
-                "x": {"aggregate": "argmax", "field": " Per 100K Population", "type": "quantitative"},
+                "x": {"aggregate": "argmax", "field": " Per 100K Population", "type": "quantitative", "axis": null},
                 "y": {"aggregate": "max", "field": " Per 100K Population", "type": "quantitative"},
                 "text": {"aggregate": "max", "field": " Per 100K Population", "type": "quantitative", "format": ".2f"}
             }

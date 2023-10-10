@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--JS needed for vega-->
+        <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+        <script src="vega_lite_vis.js"></script>
+
+        <title>FIT3179 Homework</title>
+    </head>
+    <body>
+        <h2>1. Homework Week 9</h2> 
+        <div id="vis"></div>
+        <hr>
+        <br>
+        <h2>2. Homework Week 10</h2> 
+        <div id ="vis2"></div>
+
+        <script>
+            var spec1 = "https://raw.githubusercontent.com/sheena-22/FIT3179-HW/main/hw/hw.vg.json";
+            vegaEmbed('#vis', spec1).then(function(result) {}).catch(console.error);
+
+        var spec2 = "https://raw.githubusercontent.com/sheena-22/FIT3179-HW/main/hw_w10/hw10.vg.json"
+        vegaEmbed('#vis2', spec2).then(function(result){}).catch(console.error)
+    </script>
+    </body>
+</html>
