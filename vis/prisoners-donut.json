@@ -1,0 +1,37 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+      "url": "https://raw.githubusercontent.com/sheena-22/FIT3179-A2/main/dataset/data_cts_prisons_and_prisoners.csv"
+    },
+    "transform": [
+      {"filter": "datum.Sex === 'Male' || datum.Sex === 'Female'"},
+      {"filter": "datum.Region === 'Asia'"},
+      {"aggregate": [{"op": "sum", "field": "VALUE", "as": "total_count"}]}
+    ],
+    "layer": [
+      {
+        "data": {"values": [{"Region": "Asia"}]},
+        "mark": {"type": "text", "baseline": "middle", "align": "center", "dy": -5, "fontSize": 16, "fontWeight": "bold"},
+        "encoding": {"text": {"field": "Region", "type": "ordinal"}}
+      },
+      {
+        "mark": {"type": "arc", "innerRadius": 80},
+        "encoding": {
+          "theta": {"field": "total_count", "type": "quantitative", "title": "Total Count"},
+          "color": {"field": "Sex", "type": "nominal", "scale": {"range": ["#1f77b4", "#ff7f0e"]},
+          "tooltip": [
+            {"field": "Region", "type": "nominal", "title": "Region"},
+            {"field": "Sex", "type": "nominal", "title": "Sex"},
+            {"field": "total_count", "type": "quantitative", "title": "Total Count"}
+          ]
+        }
+      }}
+    ],
+    "config": {
+      "view": {"stroke": "transparent"},
+      "arc": {"strokeWidth": 0},
+      "axis": {"grid": false, "labels": false, "ticks": false},
+      "legend": {"orient": "bottom", "padding": 0, "symbolSize": 100, "labelFontSize": 14}
+    }
+  }
+  
