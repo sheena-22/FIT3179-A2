@@ -1,43 +1,50 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "description": "A split bar chart showing the number of male and female prisoners in each region.",
+    "description": "A horizontal diverging split bar chart showing the number of male and female prisoners in each region.",
     "data": {
-        "url": "https://raw.githubusercontent.com/sheena-22/FIT3179-A2/main/dataset/clean.csv"
-        
+      "url": "https://raw.githubusercontent.com/sheena-22/FIT3179-A2/main/dataset/clean.csv"
     },
     "transform": [
-        {
-            "filter": {
-                "field": "Year",
-                "gte": 2010
-            }
-        },
-        {
-            "filter": {
-            "oneOf": ["Male", "Female"],
-            "field": "Sex"
-            }
+      {
+        "filter": {
+          "field": "Year",
+          "gte": 2010
         }
+      },
+      {
+        "filter": {
+          "oneOf": ["Male", "Female"],
+          "field": "Sex"
+        }
+      }
     ],
-    "mark": "bar",
+    "mark": {
+      "type": "bar",
+      "orient": "horizontal" 
+    },
     "encoding": {
-      "x": {"field": "Region", "type": "nominal", "axis": {"title": "Region"}},
-      "y": {"field": "Total", "type": "quantitative", "axis": {"title": "Number of Prisoners"}},
-      "color": {"field": "Sex", "type": "nominal", "legend": {"title": "Gender"}, "scale": {"domain": ["Male", "Female"], "range": ["#1f77b4", "#f24993"]}},
+      "y": {"field": "Region", "type": "nominal", "axis": {"title": "Region"}},
+      "x": {"field": "Total", "type": "quantitative", "axis": {"title": "Number of Prisoners"}},
+      "color": {
+        "field": "Sex",
+        "type": "nominal",
+        "legend": {"title": "Gender"},
+        "scale": {"domain": ["Male", "Female"], "range": ["#1f77b4", "#f24993"]}
+      },
       "column": {"field": "Year", "type": "ordinal", "header": {"title": "Year"}},
       "tooltip": [
-            {
-                "field": "Sex",
-                "type": "nominal",
-                "title": "Gender"
-            },
-            {
-                "field": "Total",
-                "type": "quantitative",
-                "aggregate": "sum",
-                "title": "Number of Prisoners"
-            }
-        ]
+        {
+          "field": "Sex",
+          "type": "nominal",
+          "title": "Gender"
+        },
+        {
+          "field": "Total",
+          "type": "quantitative",
+          "aggregate": "sum",
+          "title": "Number of Prisoners"
+        }
+      ]
     }
   }
   
