@@ -4,7 +4,7 @@
   "data": {
     "url": "https://raw.githubusercontent.com/sheena-22/FIT3179-A2/main/dataset/clean.csv"
   },
-    "transform": [
+  "transform": [
     {"filter": "datum.Year == yearSelect"},
     {
       "calculate": "datum.Sex == 'Female' ? -datum.Total : datum.Total",
@@ -13,38 +13,25 @@
   ],
   "width": 1000,
   "height": 500,
+  "selection": {
+    "gender_highlight": {
+      "type": "multi",
+      "fields": ["Sex"],
+      "bind": "legend"
+    }
+  },
   "params": [
     {
       "name": "yearSelect",
       "bind": {
         "input": "select",
         "options": [
-          2010,
-          2011,
-          2012,
-          2013,
-          2014,
-          2015,
-          2016,
-          2017,
-          2018,
-          2019,
-          2020
+          2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020
         ],
         "labels": [
-          "2010",
-          "2011",
-          "2012",
-          "2013",
-          "2014",
-          "2015",
-          "2016",
-          "2017",
-          "2018",
-          "2019",
-          "2020"
+          "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020"
         ],
-        "name": "Year Selection: "
+        "name": "Year Selection:"
       }
     }
   ],
@@ -67,6 +54,14 @@
       "type": "nominal",
       "legend": {"title": "Gender"},
       "scale": {"domain": ["Male", "Female"], "range": ["#1f77b4", "#f24993"]}
-    }
+    },
+    "opacity": {
+      "condition": {"selection": "gender_highlight", "value": 1},
+      "value": 0.2
+    },
+    "tooltip": [
+      {"field": "Sex", "type": "nominal", "title": "Gender"},
+      {"field": "Total", "type": "quantitative", "title": "Number of Prisoners"}
+    ]
   }
 }
