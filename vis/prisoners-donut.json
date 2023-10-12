@@ -1,37 +1,64 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "data": {
-      "url": "https://raw.githubusercontent.com/sheena-22/FIT3179-A2/main/dataset/data_cts_prisons_and_prisoners.csv"
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "A donut chart showing the proportion of female to male.",
+  "data": {
+    "url": "https://raw.githubusercontent.com/sheena-22/FIT3179-A2/main/dataset/age-clean.csv",
+    "format": {"type": "csv"}
+  },
+  "params": [
+    {
+      "name": "yearSelect",
+      "value": 2010, 
+      "bind": {
+          "input": "select",
+          "options": [
+              2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020
+          ],
+          "labels":[
+              "2010", "2011", "2012", "2013", "2014", "2015", "2016", 
+              "2017", "2018", "2019", "2020"
+          ],
+          "name": "Year Selection: "
+      }
     },
-    "transform": [
-      {"filter": "datum.Sex === 'Male' || datum.Sex === 'Female'"},
-      {"filter": "datum.Region === 'Asia'"},
-      {"aggregate": [{"op": "sum", "field": "VALUE", "as": "total_count"}]}
-    ],
-    "layer": [
-      {
-        "data": {"values": [{"Region": "Asia"}]},
-        "mark": {"type": "text", "baseline": "middle", "align": "center", "dy": -5, "fontSize": 16, "fontWeight": "bold"},
-        "encoding": {"text": {"field": "Region", "type": "ordinal"}}
-      },
-      {
-        "mark": {"type": "arc", "innerRadius": 80},
-        "encoding": {
-          "theta": {"field": "total_count", "type": "quantitative", "title": "Total Count"},
-          "color": {"field": "Sex", "type": "nominal", "scale": {"range": ["#1f77b4", "#ff7f0e"]},
-          "tooltip": [
-            {"field": "Region", "type": "nominal", "title": "Region"},
-            {"field": "Sex", "type": "nominal", "title": "Sex"},
-            {"field": "total_count", "type": "quantitative", "title": "Total Count"}
-          ]
-        }
-      }}
-    ],
-    "config": {
-      "view": {"stroke": "transparent"},
-      "arc": {"strokeWidth": 0},
-      "axis": {"grid": false, "labels": false, "ticks": false},
-      "legend": {"orient": "bottom", "padding": 0, "symbolSize": 100, "labelFontSize": 14}
+    {
+      "name": "regionSelect",
+      "value": "Africa", 
+      "bind": {
+          "input": "select",
+          "options": [
+              "Africa", "Americas", "Asia", "Europe", "Oceania"
+          ],
+          "labels":[
+              "Africa", "Americas", "Asia", "Europe", "Oceania"
+          ],
+          "name": "Region Selection: "
+      }
     }
+  ],
+  "transform": [
+    {"filter": "(datum.Region == regionSelect)"},
+    {"filter": "(datum.Year == yearSelect)"},
+    {"filter": {
+      "oneOf": ["Adult", "Juveniles"],
+      "field": "Age"
+    }},
+    {"aggregate": [{"op": "sum", "field": "Total", "as": "total"}], "groupby": ["Age"]},
+    {"window": [{"op": "sum", "field": "total", "as": "TotalSum"}], "frame": [null, null]},
+    {"calculate": "(datum.total / datum.TotalSum) * 100", "as": "Percentage"}
+  ],
+  "mark": "arc",
+  "encoding": {
+    "theta": {"field": "total", "type": "quantitative"},
+    "color": {
+      "field": "Age",
+      "type": "nominal",
+      "title": "Age Group"
+    },
+    "tooltip": [{"field": "Age", "type": "nominal", "title": "Age Group"}, {"field": "total", "type": "quantitative"}, {"field":"Percentage","type":"quantitative","format":".2f"}]
+  },
+  "view": {"stroke": null},
+  "config": {
+    "arc": {"innerRadius": 60}
   }
-  
+}
