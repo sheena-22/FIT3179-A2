@@ -1,87 +1,103 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "data": {
-        "url": "https://raw.githubusercontent.com/sheena-22/FIT3179-A2/main/dataset/world-crime-rate-statistics-clean.csv"
+      "url": "https://raw.githubusercontent.com/sheena-22/FIT3179-A2/main/dataset/world-crime-rate-statistics-clean.csv"
     },
-    
-    "width": 480,
-    "height": 240,
-    "title": "Crime Rate Per 100k Population Globally",
-    
-    "layer":[
-        {
+    "title": {
+      "text": "Global Crime Rate Per 100k Population",
+      "subtitle": "From 2000 to 2020",
+      "subtitleColor": "gray"
+    },
+    "vconcat": [
+      {
+        "width": 480,  
+        "height": 240,
+        "layer": [
+          {
             "mark": "line",
             "encoding": {
-                "x": {
-                    "field": "Year",
-                    "type": "temporal",
-                    "axis": {
-                        "title": ""
-                    }
-                },
-                "y": {
-                    "field": " Per 100K Population",
-                    "type": "quantitative",
-                    "axis": {
-                        "title": "Crime Rate Per 100k Population"
-                    },
-                    "scale": {
-                        "domain": [0, 10]
-                    }
+              "x": {
+                "field": "Year",
+                "type": "temporal",
+                "axis": {
+                  "title": ""
                 }
+              },
+              "y": {
+                "field": " Per 100K Population",
+                "type": "quantitative",
+                "axis": {
+                  "title": "Crime Rate Per 100k Population"
+                },
+                "scale": {
+                  "domain": {"param": "brush"}
+                }
+              }
             }
-        },
-        {
+          },
+          {
             "mark": {
-                "type": "point",
-                "filled": true,
-                "size": 20,
-                "tooltip": true
+              "type": "point",
+              "filled": true,
+              "size": 20,
+              "tooltip": true
             },
             "encoding": {
-                "x": {
-                    "field": "Year",
-                    "type": "temporal",
-                    "axis": {
-                        "title": ""
-                    }
+              "x": {
+                "field": "Year",
+                "type": "temporal",
+                "axis": {
+                  "title": ""
                 },
-                "y": {
-                    "field": " Per 100K Population",
-                    "type": "quantitative",
-                    "axis": {
-                        "title": "Crime Rate Per 100k Population"
-                    }
-                },
-                "tooltip": [  
-                    {"field": "Year", "type": "temporal", "title": "Year", "format": "%Y"},
-                    {"field": " Per 100K Population", "type": "quantitative", "title": "Crime Rate Per 100k Population"}
-                ],
-                "color": {"datum": "Actual Crime Rate"}
+                "scale": {
+                    "domain": {"param": "brush"}
+                }
+              },
+              "y": {
+                "field": " Per 100K Population",
+                "type": "quantitative",
+                "axis": {
+                  "title": "Crime Rate Per 100k Population"
+                }
+              },
+              "tooltip": [
+                {"field": "Year", "type": "temporal", "title": "Year", "format": "%Y"},
+                {"field": " Per 100K Population", "type": "quantitative", "title": "Crime Rate Per 100k Population"}
+              ],
+              "color": {"datum": "Actual Crime Rate"}
             }
-        },
-        {
+          },
+          {
             "mark": "rule",
             "encoding": {
+                "x": {
+                    "scale": {
+                        "domain": {"param": "brush"}
+                      }
+                },
                 "y": {
                     "aggregate": "mean", "field": " Per 100K Population", "type": "quantitative"                },
                 "color": {"datum": "Mean Crime Rate"}
             }
-        },
-        {
-            "mark": {
-              "type": "text",
-              "align": "left",
-              "baseline": "middle",
-              "dx": 10, 
-              "dy": -10, 
-              "fontWeight": "bold"
-            },
-            "encoding": {
-                "x": {"aggregate": "argmax", "field": " Per 100K Population", "type": "quantitative", "axis": null},
-                "y": {"aggregate": "max", "field": " Per 100K Population", "type": "quantitative"},
-                "text": {"aggregate": "max", "field": " Per 100K Population", "type": "quantitative", "format": ".2f"}
-            }
+        }
+        ]
+      },
+      {
+        "width": 480,
+        "height": 60,
+        "mark": "area",
+        "params": [
+          {"name": "brush", "select": {"type": "interval", "encodings": ["x"]}}
+        ],
+        "encoding": {
+          "x": {"field": "Year", "type": "temporal"},
+          "y": {
+            "field": " Per 100K Population",
+            "type": "quantitative",
+            "axis": {"tickCount": 3, "grid": false}
           }
+        }
+      }
     ]
-}
+  }
+  
