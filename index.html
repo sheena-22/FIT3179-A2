@@ -11,22 +11,49 @@
         <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
         <script src="vega_lite_vis.js"></script>
 
-        <title>FIT3179 Homework</title>
+        <link rel="stylesheet" href="style.css">
+
+        <title>FIT3179 A2</title>
     </head>
     <body>
-        <h2>1. Homework Week 9</h2> 
-        <div id="vis"></div>
-        <hr>
-        <br>
-        <h2>2. Homework Week 10</h2> 
-        <div id ="vis2"></div>
+        <div class="header">
+            <h1>World Crime Statistics</h1>
+        </div>
+        <div class="container">
+            <h2>World Crime Index 2023</h2> 
+            <div id="vis"></div>
+            <br>
+            
+            <h2>World Crime Rate from 2000 to 2020</h2> 
+            <div class="columns">
+                
+                <div id ="vis2"></div>
 
-        <script>
-            var spec1 = "https://raw.githubusercontent.com/sheena-22/FIT3179-HW/main/hw/hw.vg.json";
-            vegaEmbed('#vis', spec1).then(function(result) {}).catch(console.error);
+                <p class="caption">In between years 2000 to 2020, the global crime rate per 100K population peaked in the year 2001 (6.94%).
+                    In 18 years' time, the global crime rate has decreased by 1.33% (5.61% in 2020). This shows that the world's safety has improved over the years.
+                </p>
+            </div>
+            <br>
 
-        var spec2 = "https://raw.githubusercontent.com/sheena-22/FIT3179-HW/main/hw_w10/hw10.vg.json"
-        vegaEmbed('#vis2', spec2).then(function(result){}).catch(console.error)
-    </script>
+            <h2>Prisoners in Various Regions (by Gender)</h2> 
+            <div id ="vis3"></div>
+            <br>
+            
+            <h2>Prisoners in Various Regions (by Age Group)</h2> 
+            <div id ="vis4"></div>
+        </div>
     </body>
+    <script>
+        var spec1 = "https://raw.githubusercontent.com/sheena-22/FIT3179-A2/main/vis/crime-index-2023-choropleth.json";
+        vegaEmbed('#vis', spec1).then(function(result) {}).catch(console.error);
+
+        var spec2 = "https://raw.githubusercontent.com/sheena-22/FIT3179-A2/main/vis/world-crime-rate-line.json";
+        vegaEmbed('#vis2', spec2).then(function(result) {}).catch(console.error);
+
+        var spec3 = "https://raw.githubusercontent.com/sheena-22/FIT3179-A2/main/vis/prisoners-split-bar.json"
+        vegaEmbed('#vis3', spec3).then(function(result){}).catch(console.error)
+
+        var spec4 = "https://raw.githubusercontent.com/sheena-22/FIT3179-A2/main/vis/prisoners-donut.json"
+        vegaEmbed('#vis4', spec4).then(function(result){}).catch(console.error)
+    </script>
 </html>
