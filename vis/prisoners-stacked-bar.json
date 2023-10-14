@@ -22,8 +22,9 @@
         }
       }
     ],
+    "width": 480,  
+    "height": 240,
     "mark": "bar",
-    "width": {"step": 17},
     "encoding": {
       "y": {
         "aggregate": "sum", "field": "Total",

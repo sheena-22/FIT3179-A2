@@ -47,6 +47,8 @@
     {"window": [{"op": "sum", "field": "total", "as": "TotalSum"}], "frame": [null, null]},
     {"calculate": "(datum.total / datum.TotalSum) * 100", "as": "Percentage"}
   ],
+  "width": 480,  
+  "height": 240,
   "mark": "arc",
   "encoding": {
     "theta": {"field": "total", "type": "quantitative"},
