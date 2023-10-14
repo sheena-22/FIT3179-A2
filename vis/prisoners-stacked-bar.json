@@ -1,0 +1,40 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+      "url": "https://raw.githubusercontent.com/sheena-22/FIT3179-A2/main/dataset/sentenced-clean.csv"
+    },
+    "transform": [
+      {"filter": "datum.Year == yearSelect"},
+      {"calculate": "datum.Category == 'Sentenced' ? 'Sentenced' : 'Unsentenced'", "as": "Category"}
+    ],
+    "params": [
+      {
+        "name": "yearSelect",
+        "bind": {
+          "input": "select",
+          "options": [
+            2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020
+          ],
+          "labels": [
+            "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020"
+          ],
+          "name": "Year Selection:"
+        }
+      }
+    ],
+    "mark": "bar",
+    "width": {"step": 17},
+    "encoding": {
+      "y": {
+        "aggregate": "sum", "field": "Total",
+        "title": "Percentage of Prisoners",
+        "stack":  "normalize"
+      },
+      "x": {"field": "Region"},
+      "color": {
+        "field": "Category",
+        "scale": {"range": ["#675193", "#ca8861"]}
+      }
+    }
+  }
+  
