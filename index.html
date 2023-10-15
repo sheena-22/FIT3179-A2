@@ -6,10 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!--JS needed for vega-->
-        <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
-        <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
-        <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
-        <script src="vega_lite_vis.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 
         <link rel="stylesheet" href="style.css">
 
@@ -17,11 +16,21 @@
     </head>
     <body>
         <div class="header">
-            <h1>World Crime Statistics</h1>
+            <h1>World Crime Statistics &#128110;</h1>
+            <p class="intro">
+                Crime knows no borders, and its impact reverberates around the world. In this visualisation, we distill complex crime statistics into clear, visual insights that uncover global crime patterns. 
+                Discover which regions are most affected, the world's crime rate across a period of time, and the statistics of prisoners in various regions across the world.
+            </p>
         </div>
         <div class="container">
-            <h2>World Crime Index 2023</h2> 
-            <div id="vis"></div>
+            <div class="map">
+                <h2>World Crime Index 2023</h2> 
+                <p class="caption">
+                    The crime index is an estimation of the overall level of crime in a given city or a country.
+                    The <span class="highlight">United States of America</span> is reported to have the <span class="highlight">highest crime index in 2023</span>, with a value of 2720.1.
+                </p>
+                <div id="vis1"></div>
+            </div>
             <br>
             
             <h2>World Crime Rate from 2000 to 2020</h2> 
@@ -30,22 +39,54 @@
                 <div id ="vis2"></div>
 
                 <p class="caption">In between years 2000 to 2020, the global crime rate per 100K population peaked in the year 2001 (6.94%).
-                    In 18 years' time, the global crime rate has decreased by 1.33% (5.61% in 2020). This shows that the world's safety has improved over the years.
+                    In 18 years' time, the global crime rate has <span class="highlight">decreased by 1.33%</span> (5.61% in 2020). This shows that the world's safety has improved over the years.
                 </p>
             </div>
             <br>
 
             <h2>Prisoners in Various Regions (by Gender)</h2> 
-            <div id ="vis3"></div>
+            <div class="columns">
+
+                <div id ="vis3"></div>
+
+                <p class="caption">
+                    According to the split bar chart on the left, it can be seen that every year, the <span class="highlight">Americas has the most number of prisoners</span> as compared to other regions.
+                    Moreover, there are generally much more male prisoners than female prisoners in each region.
+                </p>
+            </div>
             <br>
             
             <h2>Prisoners in Various Regions (by Age Group)</h2> 
-            <div id ="vis4"></div>
+            <div class="columns">
+
+                <div id ="vis4"></div>
+
+                <p class="caption">
+                    Approximately <span class="highlight">98~99%</span> of prisoners in each region are <span class="highlight">aged 18 and above</span>, with the remaining 1~2% being teenagers.
+                </p>
+            </div>
+            <br>
+
+            <h2>Sentenced or Unsentenced?</h2> 
+            <div class="columns">
+
+                <div id ="vis5"></div>
+
+                <p class="caption">
+                    In the years 2011 and before, more than 50% of the prisoners are sentenced in most of the regions.
+                    However, in the years 2012 and after, more than 50% of the prisoners are unsentenced in most of the regions.
+                    Despite so, <span class="highlight">Asia, Europe, and Oceania have higher percentage of sentenced prisoners</span> than unsentenced prisoners as compared to other regions.
+                </p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy Sheena Quah Xin Yee (33037264)</p>
         </div>
     </body>
     <script>
         var spec1 = "https://raw.githubusercontent.com/sheena-22/FIT3179-A2/main/vis/crime-index-2023-choropleth.json";
-        vegaEmbed('#vis', spec1).then(function(result) {}).catch(console.error);
+        vegaEmbed('#vis1', spec1).then(function(result) {}).catch(console.error);
 
         var spec2 = "https://raw.githubusercontent.com/sheena-22/FIT3179-A2/main/vis/world-crime-rate-line.json";
         vegaEmbed('#vis2', spec2).then(function(result) {}).catch(console.error);
@@ -55,5 +96,8 @@
 
         var spec4 = "https://raw.githubusercontent.com/sheena-22/FIT3179-A2/main/vis/prisoners-donut.json"
         vegaEmbed('#vis4', spec4).then(function(result){}).catch(console.error)
+
+        var spec5 = "https://raw.githubusercontent.com/sheena-22/FIT3179-A2/main/vis/prisoners-stacked-bar.json"
+        vegaEmbed('#vis5', spec5).then(function(result){}).catch(console.error)
     </script>
 </html>
