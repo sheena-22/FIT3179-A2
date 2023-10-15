@@ -51,7 +51,7 @@
         "labelBaseline": "middle",
         "labelPadding": -5,
         "labelOffset": -15,
-        "titleX": 5,
+        "titleX": 0,
         "titleY": -5,
         "titleAngle": 0,
         "titleAlign": "left"
@@ -67,7 +67,7 @@
     "color": {
       "field": "Sex",
       "type": "nominal",
-      "legend": {"title": "Gender"},
+      "legend": {"title": "Gender", "orient": "top"},
       "scale": {"domain": ["Male", "Female"], "range": ["#1f77b4", "#f24993"]}
     },
     "opacity": {
