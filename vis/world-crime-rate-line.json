@@ -77,7 +77,7 @@
                 },
                 "y": {
                     "aggregate": "mean", "field": " Per 100K Population", "type": "quantitative"                },
-                "color": {"datum": "Mean Crime Rate"}
+                "color": {"datum": "Mean Crime Rate", "value": "#e06547"}
             }
         }
         ]
