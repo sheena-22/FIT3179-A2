@@ -20,6 +20,21 @@
       "bind": "legend"
     }
   },
+  "params": [
+    {
+      "name": "yearSelect",
+      "bind": {
+        "input": "select",
+        "options": [
+          2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020
+        ],
+        "labels": [
+          "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020"
+        ],
+        "name": "Year Selection:"
+      }
+    }
+  ],
   "mark": {"type": "bar", "yOffset": 5, "cornerRadiusEnd": 2, "height": {"band": 0.5}},
   "encoding": {
     "y": {
