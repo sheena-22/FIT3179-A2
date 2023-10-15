@@ -37,7 +37,7 @@
     },
     "color": {
       "field": "Category",
-      "scale": {"range": ["#675193", "#ca8861"]},
+      "scale": {"range": ["#685374", "#db8b56"]},
       "legend": {"title": "Category", "orient": "top"}
     },
     "tooltip": [

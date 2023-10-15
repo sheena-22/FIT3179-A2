@@ -55,7 +55,11 @@
     "color": {
       "field": "Age",
       "type": "nominal",
-      "title": "Age Group"
+      "title": "Age Group",
+      "scale": {
+        "domain": ["Adult", "Juveniles"],
+        "range": ["#287f8e", "#ecae7d"]
+      }
     },
     "tooltip": [{"field": "Age", "type": "nominal", "title": "Age Group"}, {"field": "total", "type": "quantitative"}, {"field":"Percentage","type":"quantitative","format":".2f"}]
   },

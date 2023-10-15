@@ -68,7 +68,7 @@
       "field": "Sex",
       "type": "nominal",
       "legend": {"title": "Gender", "orient": "top"},
-      "scale": {"domain": ["Male", "Female"], "range": ["#1f77b4", "#f24993"]}
+      "scale": {"domain": ["Male", "Female"], "range": ["#084c61", "#dc4e57"]}
     },
     "opacity": {
       "condition": {"selection": "gender_highlight", "value": 1},
