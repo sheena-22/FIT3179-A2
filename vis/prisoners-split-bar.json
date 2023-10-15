@@ -35,13 +35,28 @@
       }
     }
   ],
-  "mark": {"type": "bar"},
+  "mark": {"type": "bar", "yOffset": 5, "cornerRadiusEnd": 2, "height": {"band": 0.5}},
   "encoding": {
     "y": {
       "field": "Region",
       "type": "nominal",
       "sort": "ascending",
-      "axis": {"title": "Region"}
+      "axis": {
+        "title": "Region", 
+        "bandPosition": 0, 
+        "grid": true,
+        "domain": false,
+        "ticks": false,
+        "labelAlign": "left",
+        "labelBaseline": "middle",
+        "labelPadding": -5,
+        "labelOffset": -15,
+        "titleX": 5,
+        "titleY": -5,
+        "titleAngle": 0,
+        "titleAlign": "left"
+      },
+      "scale": {"padding": 0}
     },
     "x": {
       "field": "Total",
