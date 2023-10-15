@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "A horizontal diverging split bar chart showing the number of male and female prisoners in each region.",
   "data": {
-    "url": "https://raw.githubusercontent.com/sheena-22/FIT3179-A2/main/dataset/clean.csv"
+    "url": "https://raw.githubusercontent.com/sheena-22/FIT3179-A2/main/dataset/gender-clean.csv"
   },
   "transform": [
     {"filter": "datum.Year == yearSelect"},
