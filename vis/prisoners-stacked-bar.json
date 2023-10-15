@@ -23,7 +23,7 @@
     }
   ],
   "width": 480,
-  "height": 240,
+  "height": 300,
   "mark": {"type": "bar", "width": 45},  
   "encoding": {
     "y": {
@@ -37,7 +37,13 @@
     },
     "color": {
       "field": "Category",
-      "scale": {"range": ["#675193", "#ca8861"]}
-    }
+      "scale": {"range": ["#675193", "#ca8861"]},
+      "legend": {"title": "Category", "orient": "top"}
+    },
+    "tooltip": [
+      {"field": "Category", "title": "Category"},
+      {"field": "Total", "title": "Total", "format": ".2f"},
+      {"field": "Region", "title": "Region"}
+    ]
   }
 }
